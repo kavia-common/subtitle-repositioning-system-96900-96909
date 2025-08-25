@@ -1,82 +1,49 @@
-# Lightweight React Template for KAVIA
+# Subtitle Repositioning Frontend (React)
 
-This project provides a minimal React template with a clean, modern UI and minimal dependencies.
+A minimal, modern UI for uploading a video and subtitle file, sending them to the backend for repositioning to avoid overlap with burnt‑in text, and downloading the result.
 
 ## Features
 
-- **Lightweight**: No heavy UI frameworks - uses only vanilla CSS and React
-- **Modern UI**: Clean, responsive design with KAVIA brand styling
-- **Fast**: Minimal dependencies for quick loading times
-- **Simple**: Easy to understand and modify
+- Video and subtitle upload (supported subs: `.srt`, `.ass`, `.ssa`, `.vtt`)
+- Submit to backend `/reposition` endpoint
+- Clear status and simulated progress while waiting
+- Download repositioned subtitle file
+- Light/Dark theme toggle
 
 ## Getting Started
 
-In the project directory, you can run:
+Install dependencies and run:
 
-### `npm start`
-
-Runs the app in development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-### `npm test`
-
-Launches the test runner in interactive watch mode.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-## Customization
-
-### Colors
-
-The main brand colors are defined as CSS variables in `src/App.css`:
-
-```css
-:root {
-  --kavia-orange: #E87A41;
-  --kavia-dark: #1A1A1A;
-  --text-color: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --border-color: rgba(255, 255, 255, 0.1);
-}
+```
+npm install
+npm start
 ```
 
-### Components
+The app will run at http://localhost:3000
 
-This template uses pure HTML/CSS components instead of a UI framework. You can find component styles in `src/App.css`. 
+## Backend connection
 
-Common components include:
-- Buttons (`.btn`, `.btn-large`)
-- Container (`.container`)
-- Navigation (`.navbar`)
-- Typography (`.title`, `.subtitle`, `.description`)
+By default, the app submits to `http://subtitle_backend:3001/reposition` (useful in Docker).
+You can override the backend base URL via environment variable:
 
-## Learn More
+- Copy `.env.example` to `.env`
+- Set `REACT_APP_BACKEND_URL`, e.g.:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+REACT_APP_BACKEND_URL=http://localhost:3001
+```
 
-### Code Splitting
+Restart the dev server after changing `.env`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Usage
 
-### Analyzing the Bundle Size
+1. Select a video file and a subtitle file.
+2. Click "Reposition Subtitles".
+3. Wait while the app shows status/progress.
+4. Download the resulting subtitle file.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Notes
 
-### Making a Progressive Web App
+- Large videos may take longer to process; keep the tab open.
+- For true upload progress visualization, you may switch to XHR and a backend that reports progress; this UI currently simulates progress during upload/processing for user feedback.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
