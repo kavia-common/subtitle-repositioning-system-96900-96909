@@ -1,0 +1,4 @@
+{
+    "command": "npm run test",
+    "working_directory": "/home/kavia/workspace/code-generation/subtitle-repositioning-system-96900-96909/subtitle_frontend"
+}
